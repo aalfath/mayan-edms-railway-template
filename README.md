@@ -1,3 +1,5 @@
+[![Deploy on Railway](https://railway.com/button.svg)](https://railway.com/new/template/mayan-edms?utm_medium=integration&utm_source=button&utm_campaign=mayan-edms)
+
 # Mayan EDMS on Railway
 
 A Railway template for [Mayan EDMS](https://www.mayan-edms.com), the open-source document management system: upload, OCR, index, tag, version and route documents through workflows from a web UI or its REST API.
