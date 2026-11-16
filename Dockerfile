@@ -5,8 +5,8 @@ FROM mayanedms/mayanedms:v4.12.2@sha256:03f7f43a686433e7dfc1151c3df37d8c376149e5
 COPY railway-start.sh railway-run.sh /usr/local/bin/
 RUN chmod 0755 /usr/local/bin/railway-start.sh /usr/local/bin/railway-run.sh
 
-# Documents, the secret key and caches live here: mount a volume on it.
-VOLUME ["/var/lib/mayan"]
+# Documents, the secret key and caches live in /var/lib/mayan: mount a
+# Railway volume there (Railway rejects the Dockerfile VOLUME instruction).
 EXPOSE 8000
 
 ENTRYPOINT ["/usr/local/bin/railway-start.sh"]
