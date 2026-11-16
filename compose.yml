@@ -1,0 +1,22 @@
+# Local test only (mirrors the Railway template: app + Postgres + Redis).
+services:
+  postgres:
+    image: postgres:18
+    environment: {POSTGRES_USER: postgres, POSTGRES_PASSWORD: localpass, POSTGRES_DB: railway}
+    volumes: [pg:/var/lib/postgresql]
+    labels: {her: "2275"}
+  redis:
+    image: redis:8
+    command: ["redis-server", "--requirepass", "localredis"]
+    labels: {her: "2275"}
+  mayan:
+    build: .
+    environment:
+      DATABASE_URL: postgresql://postgres:localpass@postgres:5432/railway
+      REDIS_URL: redis://default:localredis@redis:6379
+      MAYAN_ADMIN_PASSWORD: LocalTestPass123x
+      PORT: "8000"
+    ports: ["42275:8000"]
+    volumes: [data:/var/lib/mayan]
+    labels: {her: "2275"}
+volumes: {pg: {}, data: {}}
